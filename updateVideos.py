@@ -22,8 +22,8 @@ for item in data["atoz"]:
 
 def gitpush(filename):
     subprocess.call("git pull", shell=True)
-    subprocess.call("git add "+filename, shell=True)
-    subprocess.call("git commit -m '" + "added + " + filename + "'")
+    subprocess.call("git add .", shell=True)
+    subprocess.call("git commit -m " + '"' + "added " + filename + '"')
     subprocess.call("git push --all")
         
 def rlinput(prompt, prefill=''):
