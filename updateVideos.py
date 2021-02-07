@@ -20,10 +20,10 @@ for item in data["atoz"]:
            selection.append(videoFilename)
            count = count + 1
 
-def gitpush(filename):
+def gitpush():
     subprocess.call("git pull", shell=True)
     subprocess.call("git add .", shell=True)
-    subprocess.call("git commit -m " + '"' + "added " + filename + '"')
+    subprocess.call("git commit -m 'added new video'" )
     subprocess.call("git push --all")
         
 def rlinput(prompt, prefill=''):
@@ -50,7 +50,7 @@ def trimVideo(filename):
     isSave = input("save?")
     if (isSave=="y"):
         subprocess.call("rm " + draft, shell=True)
-        gitpush(filename)
+        gitpush()
         
 while True:
     print("find this video " + videoFilename)
@@ -66,6 +66,6 @@ while True:
     if(isTrim=="y"):
         trimVideo(filename)
     else:    
-        gitpush(filename)
+        gitpush()
         
 
