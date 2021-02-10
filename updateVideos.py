@@ -23,8 +23,8 @@ for item in data["atoz"]:
 def gitpush():
     subprocess.call("git pull", shell=True)
     subprocess.call("git add .", shell=True)
-    subprocess.call("git commit -m 'added new video'" )
-    subprocess.call("git push --all")
+    subprocess.call("git commit -a", shell=True)
+    subprocess.call("git push --all", shell=True)
         
 def rlinput(prompt, prefill=''):
    readline.set_startup_hook(lambda: readline.insert_text(prefill))
@@ -58,7 +58,10 @@ while True:
     filename = selection[filechoice]
     print("filename: " + filename)
     url = input("url: ")
-    command = "youtube-dl -f mp4 " + url + " --output " + filename
+    command = "youtube-dl --list-formats " + url
+    subprocess.call(command, shell=True)
+    formatInput = input("format code: ")
+    command = "youtube-dl -f " + formatInput + " " + url + " --output " + filename
     subprocess.call(command, shell=True)
     command = "ffplay -i " + filename
     subprocess.call(command, shell=True)
