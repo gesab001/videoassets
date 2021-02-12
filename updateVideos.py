@@ -43,7 +43,7 @@ def trimVideo(filename):
     endS = input("end-second: ")
     end = endH + ":" + endM + ":" + endS + ".00"
     draft = "draft"+filename
-    command = "ffmpeg -ss " + start + " -i " +  filename + " -t end -c copy " +  draft
+    command = "ffmpeg -ss " + start + " -i " +  filename + " -t "+end+" -c copy " +  draft
     subprocess.call(command, shell=True)
     command = "ffplay -i " + draft
     subprocess.call(command, shell=True)
